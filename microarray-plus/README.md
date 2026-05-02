@@ -1,30 +1,23 @@
 # Genome Plus Microarray Panel
 
-Konsolidiertes Single-File-Panel für die Genome macOS-App: enthält
-**alle SNPs aus All_SNPs_hg38** plus die zusätzlichen Positionen aus
-**PharmCAT + 13 PGS Catalog Risk Scores**.
+Konsolidiertes Single-File-Panel mit garantierter Eindeutigkeit:
+- Pro (chrom, pos): nur ein Eintrag
+- Pro rsID: nur ein Eintrag (Position aus All_SNPs_hg38 priorisiert)
 
-## Inhalt
+## Inhalt (Stand 2026-05)
 
-| Quelle | Variants |
-|---|---|
-| All_SNPs_hg38 (2M-Basis aus WGSExtract, 13 DTC-Plattformen) | 2.080.318 |
-| + PharmCAT positions v3.2.0 (PGx) | +304 (eindeutig neu) |
-| + PGS Catalog Standard 5 (BC, PC, CAD, AD, T2D) | +47.000 |
-| + PGS Catalog Autoimmune 8 (MS, T1D, RA, Pso, SLE, IBD) | +210 |
-| **Total unique** | **2.127.818** |
+| Quelle | Variants | Priorität |
+|---|---|---|
+| All_SNPs_hg38 (WGSExtract, 13 DTC-Plattformen) | 2.078.930 | 1 (höchste) |
+| + PharmCAT v3.2.0 (neue Positionen, kuratiert) | +291 | 2 |
+| + PGS Catalog (Standard 5 + Autoimmune 8) | +47.197 | 3 |
+| **Total unique** | **2.126.418** | – |
+
+Davon ~2.04M mit echtem rsID, ~88k im chr:pos-Format (PGS-Files ohne rsID-Annotation).
 
 ## Format
 
-Tab-separated, BGZF-komprimiert mit Tabix-Index (`.tbi`):
-```
-#CHROM   POS        ID
-chr1     58814      rs114420996
-chr1     69869      rs548049170
-...
-```
-
-Drop-in-Ersatz für `All_SNPs_hg38_ref.tab.gz` mit zusätzlicher klinischer Coverage.
+Tab-separated, BGZF-komprimiert mit Tabix-Index. Drop-in-Ersatz für `All_SNPs_hg38_ref.tab.gz`.
 
 ## Lizenz
 
