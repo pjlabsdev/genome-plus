@@ -12,32 +12,30 @@ Konsolidiertes klinisches Panel: All_SNPs + PharmCAT + 13 PGS Catalog Risk Score
 
 | Metrik | Wert |
 |---|---|
-| Total Positionen | 2.148.375 |
-| Eindeutige rsIDs | 2.060.277 |
+| Total Positionen | 2.146.098 |
+| Eindeutige rsIDs | 2.057.999 |
 | chr:pos-Format (PGS-Files ohne rsID) | ~88.000 |
-| **Build-3-Ergaenzung: MTHFR-Array-Marker (Liftover hg19 -> hg38)** | **+22.772** |
+| **Build-3-Ergaenzung: MTHFR-Array-Marker (GRCh38 direkt)** | **+20.495** |
 | Position-Validation gegen Ensembl REST API (dbSNP), Basis-Panel | 99.5% bestaetigt |
 | Cross-Chromosomen-Mismatches korrigiert (Basis) | 746 |
 | 1-Base-Anchor-Offsets korrigiert (Indel-Konvention, Basis) | 8.506 |
 | Andere Position-Korrekturen (Basis) | 700 |
 
-> Die +22.772 Build-3-Marker stammen aus einem hg19->hg38-Liftover (UCSC-Chain) der nicht im Basis-Panel enthaltenen Array-Positionen. Sie durchliefen NICHT die Ensembl-REST-Validierung des Basis-Panels, aber den Standard-Chromosomen-Filter und (chrom,pos)-Dedup (bestehende Eintraege haben Vorrang).
+> Die +20.495 Build-3-Marker stammen aus einem MTHFR-Labor-Array, dessen Rohdaten bereits in **GRCh38** vorliegen. Die Positionen werden daher direkt uebernommen (KEIN Liftover). Nur die rsIDs, die nicht bereits im Basis-Panel sind, werden aufgenommen; Standard-Chromosomen-Filter und (chrom,pos)-Dedup (bestehende Eintraege haben Vorrang) sind angewandt.
 
 ## MTHFR Panel (`MTHFR_hg38_ref.tab.gz`)
 
-Vollstaendiges Markerset eines MTHFR-Labor-Arrays (rsID-Positionen), auf hg38 gebracht. Erlaubt, den Array 1:1 aus einem hg38-WGS-BAM zu reproduzieren.
+Vollstaendiges Markerset eines MTHFR-Labor-Arrays (GRCh38, rsID-Positionen). Erlaubt, den Array 1:1 aus einem hg38-WGS-BAM zu reproduzieren.
 
 ### Stats (Stand 2026-06)
 
 | Metrik | Wert |
 |---|---|
-| Positionen / eindeutige rsIDs | 662.558 |
-| Quelle (rsIDs gesamt) | 663.577 |
-| davon hg38 direkt aus Genome-Plus-Panel uebernommen (Overlap) | 639.750 |
-| davon per hg19->hg38-Liftover (UCSC-Chain) | 22.808 |
-| verworfen: nicht liftbar | 996 |
-| verworfen: Alt-Contig (non-primary) | 3 |
-| verworfen: interne (chrom,pos)-Kollision | 20 |
+| Positionen | 663.592 |
+| Quelle (rsIDs gesamt im Array) | 663.577 |
+| Koordinaten-Build der Rohdaten | GRCh38 (direkt uebernommen, kein Liftover) |
+| MT-Konvention | rCRS, als chrM (= GRCh38 chrM) |
+| Filter | nur Standard-Chromosomen, (chrom,pos)-Dedup |
 
 ## Format
 
@@ -65,6 +63,6 @@ chr1     69869      rs548049170
 | PharmCAT v3.2.0 (PGx, 22 Gene) | +291 | MPL-2.0 |
 | PGS Catalog Standard 5 (BC, PC, CAD, AD, T2D) | +47.000 | mixed open |
 | PGS Catalog Autoimmune 8 (MS, T1D, RA, Pso, SLE, IBD) | +210 | PGS Catalog Terms |
-| MTHFR-Labor-Array (Liftover hg19->hg38) | +22.772 (Genome Plus) / 662.558 (MTHFR-Panel) | privat |
+| MTHFR-Labor-Array (GRCh38 direkt) | +20.495 (Genome Plus) / 663.592 (MTHFR-Panel) | privat |
 
 Komponenten-Lizenzen siehe `../docs/LICENSES.md`.
