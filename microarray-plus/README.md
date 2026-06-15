@@ -23,7 +23,7 @@ Konsolidiertes klinisches Panel: All_SNPs + PharmCAT + 13 PGS Catalog Risk Score
 
 > Die +20.495 Build-3-Marker stammen aus einem MTHFR-Labor-Array, dessen Rohdaten bereits in **GRCh38** vorliegen. Die Positionen werden daher direkt uebernommen (KEIN Liftover). Nur die rsIDs, die nicht bereits im Basis-Panel sind, werden aufgenommen; Standard-Chromosomen-Filter und (chrom,pos)-Dedup (bestehende Eintraege haben Vorrang) sind angewandt.
 
-## MTHFR Panel (`MTHFR_hg38_ref.tab.gz`)
+## MTHFR-Genetics Panel (`MTHFR-Genetics_hg38_ref.tab.gz`)
 
 Vollstaendiges Markerset eines MTHFR-Labor-Arrays (GRCh38, rsID-Positionen). Erlaubt, den Array 1:1 aus einem hg38-WGS-BAM zu reproduzieren.
 
