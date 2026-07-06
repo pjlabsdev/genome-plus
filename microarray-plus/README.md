@@ -8,20 +8,23 @@ Konsolidierte klinische Microarray-Panels fuer Genome (hg38 / GRCh38, 3-Spalten 
 
 Konsolidiertes klinisches Panel: All_SNPs + PharmCAT + 13 PGS Catalog Risk Scores, ergaenzt um die nicht-ueberlappenden Marker eines MTHFR-Labor-Arrays.
 
-### Stats (Stand 2026-06, Build 3)
+### Stats (Stand 2026-07, Build 3 + AQP4)
 
 | Metrik | Wert |
 |---|---|
-| Total Positionen | 2.146.098 |
-| Eindeutige rsIDs | 2.057.999 |
+| Total Positionen | 2.146.099 |
+| Eindeutige rsIDs | 2.058.000 |
 | chr:pos-Format (PGS-Files ohne rsID) | ~88.000 |
 | **Build-3-Ergaenzung: MTHFR-Array-Marker (GRCh38 direkt)** | **+20.495** |
+| **AQP4-Ergaenzung: rs72878794 (AQP4, chr18:26866839)** | **+1** |
 | Position-Validation gegen Ensembl REST API (dbSNP), Basis-Panel | 99.5% bestaetigt |
 | Cross-Chromosomen-Mismatches korrigiert (Basis) | 746 |
 | 1-Base-Anchor-Offsets korrigiert (Indel-Konvention, Basis) | 8.506 |
 | Andere Position-Korrekturen (Basis) | 700 |
 
 > Die +20.495 Build-3-Marker stammen aus einem MTHFR-Labor-Array, dessen Rohdaten bereits in **GRCh38** vorliegen. Die Positionen werden daher direkt uebernommen (KEIN Liftover). Nur die rsIDs, die nicht bereits im Basis-Panel sind, werden aufgenommen; Standard-Chromosomen-Filter und (chrom,pos)-Dedup (bestehende Eintraege haben Vorrang) sind angewandt.
+
+> **AQP4 (2026-07):** rs72878794 (AQP4, `chr18:26866839`, GRCh38, gegen Ensembl REST verifiziert) manuell ergaenzt — deckt das AQP4-glymphatische-Aβ-Clearance-Modul im DiseaseRisk-Bericht ab. Ein seltener AQP4-Marker fehlt in den DTC-Array-Plattformen und war daher nicht im Basis-Panel.
 
 ## MTHFR-Genetics Panel (`MTHFR-Genetics_hg38_ref.tab.gz`)
 
