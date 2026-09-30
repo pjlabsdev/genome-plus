@@ -8,15 +8,16 @@ Konsolidierte klinische Microarray-Panels fuer Genome (hg38 / GRCh38, 3-Spalten 
 
 Konsolidiertes klinisches Panel: All_SNPs + PharmCAT + 13 PGS Catalog Risk Scores, ergaenzt um die nicht-ueberlappenden Marker eines MTHFR-Labor-Arrays.
 
-### Stats (Stand 2026-07, Build 3 + AQP4)
+### Stats (Stand 2026-09, Build 3 + AQP4 + Berichtsmarker)
 
 | Metrik | Wert |
 |---|---|
-| Total Positionen | 2.146.099 |
+| Total Positionen | 2.146.100 |
 | Eindeutige rsIDs | 2.058.000 |
 | chr:pos-Format (PGS-Files ohne rsID) | ~88.000 |
 | **Build-3-Ergaenzung: MTHFR-Array-Marker (GRCh38 direkt)** | **+20.495** |
 | **AQP4-Ergaenzung: rs72878794 (AQP4, chr18:26866839)** | **+1** |
+| **Berichtsmarker-Korrektur 2026-09: 4 IDs vereinheitlicht, 1 Position ergaenzt** | **+1** |
 | Position-Validation gegen Ensembl REST API (dbSNP), Basis-Panel | 99.5% bestaetigt |
 | Cross-Chromosomen-Mismatches korrigiert (Basis) | 746 |
 | 1-Base-Anchor-Offsets korrigiert (Indel-Konvention, Basis) | 8.506 |
@@ -25,6 +26,10 @@ Konsolidiertes klinisches Panel: All_SNPs + PharmCAT + 13 PGS Catalog Risk Score
 > Die +20.495 Build-3-Marker stammen aus einem MTHFR-Labor-Array, dessen Rohdaten bereits in **GRCh38** vorliegen. Die Positionen werden daher direkt uebernommen (KEIN Liftover). Nur die rsIDs, die nicht bereits im Basis-Panel sind, werden aufgenommen; Standard-Chromosomen-Filter und (chrom,pos)-Dedup (bestehende Eintraege haben Vorrang) sind angewandt.
 
 > **AQP4 (2026-07):** rs72878794 (AQP4, `chr18:26866839`, GRCh38, gegen Ensembl REST verifiziert) manuell ergaenzt — deckt das AQP4-glymphatische-Aβ-Clearance-Modul im DiseaseRisk-Bericht ab. Ein seltener AQP4-Marker fehlt in den DTC-Array-Plattformen und war daher nicht im Basis-Panel.
+
+> **Berichtsmarker (2026-09):** Vier Berichtsmarker standen unter Synonym-IDs im Panel und fielen deshalb bei der dbSNP-Identitaetspruefung von Genome heraus. Sie tragen jetzt die rsID, die die Genome-Berichte abfragen (GRCh38, gegen lokales dbSNP b157 und hg38.fa geprueft):
+> `chr1:154454494` rs8192284 -> **rs2228145** (IL6R), `chr10:94941958` rs74052158 -> **rs72558187** (CYP2C9), `chr15:74719300` rs4646903.1 -> **rs4646903** (CYP1A1), `chr16:28606193` i6018900 -> **rs1042028** (SULT1A1).
+> Neu: `chr5:672796` **rs115523291** (ME/CFS-Forschungsbericht). Die vollstaendige Liste der Berichtsmarker mit GRCh38/GRCh37-Koordinaten fuehrt die Genome-App in `MicroarrayReportMarkers.json`; Indel-Marker (z. B. BRCA1 5382insC) sind mit dem SNP-Export nicht erfassbar.
 
 ## MTHFR-Genetics Panel (`MTHFR-Genetics_hg38_ref.tab.gz`)
 
